@@ -37,7 +37,7 @@ function TaskingDetail(props) {
                 setState({
                     ...state,
                     tasking: taskerResponse.data,
-                    assigned: personnelResponse.data.user,
+                    assigned: personnelResponse.data,
                 })
             } else {
                 const personnelResponse = await axios.get(`/api/taskers/${props.match.params.id}/available`)

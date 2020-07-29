@@ -112,7 +112,7 @@ function UpdateTasking(props) {
             {state.assigned ? 
             <div className="grid-2">
                 <p>Assigned:</p>
-                <p><Link to={`/users/${state.assigned.user.id}`}>{`${state.assigned.user.grade} ${state.assigned.user.lastName}, ${state.assigned.user.firstName}`}</Link></p>
+                <p><Link to={`/users/${state.assigned.id}`}>{`${state.assigned.grade} ${state.assigned.lastName}, ${state.assigned.firstName}`}</Link></p>
                 <button onClick={handleRemove}>Unassign</button>
             </div>
             :

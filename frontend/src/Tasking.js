@@ -18,7 +18,7 @@ function Tasking({tasking}) {
             const response = await axios.get(`/api/users/${tasking.assignedPersonnelId}`)
             setState({
                 ...state,
-                assigned: response.data.user
+                assigned: response.data
             })
         }
         if (tasking.assignedPersonnelId) {

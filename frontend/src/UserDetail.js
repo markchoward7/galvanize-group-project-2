@@ -20,8 +20,8 @@ function UserDetail(props) {
             const response = await axios.get(`/api/users/${props.match.params.id}`)
             setState({
                 ...state,
-                member: response.data.user,
-                taskingHistory: response.data.user.taskingHistory,
+                member: response.data,
+                taskingHistory: response.data.taskingHistory,
             })
         }
         fetchData()

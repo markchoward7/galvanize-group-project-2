@@ -72,11 +72,6 @@ public class Controller {
     public Map<String, Object> retrieveUser(@PathVariable Long id) {
 
         List<Map<String, Object>> queryResults = this.userRepository.retrieveUserWithTaskingHistory(id);
-        Map<String, Object> returnValue = new HashMap<>();
-//        if (queryResults.size() <= 0) {
-//            returnValue.put("user", this.userRepository.findById(id).get());
-//            return returnValue;
-//        }
         Map<String, Object> userData = new HashMap<>();
 
         userData.put("id", queryResults.get(0).get("id"));
@@ -108,8 +103,7 @@ public class Controller {
         }
         userData.put("taskingHistory", taskings);
 
-        returnValue.put("user", userData);
-        return returnValue;
+        return userData;
     }
 
     @PatchMapping("/api/users/{id}")
