@@ -32,7 +32,7 @@
 }
 
 .sidebar a:hover {
-  color: #d3d3d3;
+  color: #D3D3D3;
 }
 a {
   color: #2F4CB3;
@@ -65,7 +65,8 @@ input {
 button {
   width: 200px;
   height: 40px;
-  background-color: #61dafb;
+  background-color: #2F4CB3;
+  color: #F1F2F2;
   border: none;
   box-shadow: 0px 2px 4px rgba(0,0,0,0.4);
   border-radius: 10px;
@@ -73,30 +74,31 @@ button {
 }
 
 button:hover {
-  background-color: #22c2ee;
+  background-color: #2b4397;
 }
 
 button:active {
-  background-color: #0085aa;
+  background-color: #314385;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
+  color: #D3D3D3;
 }
 
 tr {
   display: table-row;
-  background-color: rgb(80, 95, 95);
+  background-color: #8597d6;
 }
 
 .alt-row {
-  background-color: rgb(70, 90, 90);
+  background-color: #818ebe;
 }
 
 th {
-  background-color: rgb(27, 68, 68);
+  background-color: #2F4CB3;
 }
 
 .grid-2 {
