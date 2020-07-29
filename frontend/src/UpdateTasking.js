@@ -100,10 +100,10 @@ function UpdateTasking(props) {
                 <input type="text" name="afsc" value={state.afsc} onChange={handleChange}/>
                 <p>Required Grade(s):</p>
                 <Multiselect options={state.gradeList} selectedValues={state.requiredGrade} isObject={false} onSelect={handleGradeSelect} onRemove={handleGradeSelect} 
-                style={{ chips: { background: "darkslategrey" }, searchBox: { border: "none" }, multiselectContainer: { color: "black" } }} />
+                style={{ chips: { background: "#2F4CB3" }, searchBox: { border: "none" }, multiselectContainer: { color: "black", width: "300px", "align-self": "center" }, optionContainer: { width: "300px" }, inputField: { background: "white" }, option: { height: "30px" } }} />
                 <p>Requirement Code(s):</p>
                 <Multiselect options={state.codeList} selectedValues={state.requirementCodes} isObject={false} onSelect={handleCodeSelect} onRemove={handleCodeSelect} 
-                style={{ chips: { background: "darkslategrey" }, searchBox: { border: "none" }, multiselectContainer: { color: "black" } }} />
+                style={{ chips: { background: "#2F4CB3" }, searchBox: { border: "none" }, multiselectContainer: { color: "black", width: "300px", "align-self": "center" }, optionContainer: { width: "300px" }, inputField: { background: "white" }, option: { height: "30px" } }} />
                 <button onClick={handleSubmit}>Submit</button>
                 <Link to={`/taskings/${props.match.params.id}`}><button>Cancel</button></Link>
                 <button onClick={handleDelete}>Delete</button>

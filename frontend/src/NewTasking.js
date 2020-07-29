@@ -72,10 +72,10 @@ function NewTasking(props) {
                 <input type="text" name="afsc" onChange={handleChange}/>
                 <p>Required Grade(s):</p>
                 <Multiselect options={state.gradeList} isObject={false} onSelect={handleGradeSelect} onRemove={handleGradeSelect}
-                style={{ chips: { background: "darkslategrey" }, searchBox: { border: "none" }, multiselectContainer: { color: "black" } }} />
+                style={{ chips: { background: "#2F4CB3" }, searchBox: { border: "none" }, multiselectContainer: { color: "black", width: "300px", "align-self": "center" }, optionContainer: { width: "300px" }, inputField: { background: "white" }, option: { height: "30px" } }} />
                 <p>Requirement Code(s):</p>
                 <Multiselect options={state.codeList} isObject={false} onSelect={handleCodeSelect} onRemove={handleCodeSelect}
-                style={{ chips: { background: "darkslategrey" }, searchBox: { border: "none" }, multiselectContainer: { color: "black" } }} />
+                style={{ chips: { background: "#2F4CB3" }, searchBox: { border: "none" }, multiselectContainer: { color: "black", width: "300px", "align-self": "center" }, optionContainer: { width: "300px" }, inputField: { background: "white" }, option: { height: "30px" } }} />
                 <button onClick={handleSubmit}>Submit</button>
                 <Link to={`/`}><button>Cancel</button></Link>
             </div>
