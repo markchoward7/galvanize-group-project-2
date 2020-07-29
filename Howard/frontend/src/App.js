@@ -1,25 +1,44 @@
 import React from 'react';
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom'
+
 import './App.css';
+
+import Home from './Home'
+import NewTasking from './NewTasking'
+import NewUser from './NewUser'
+import Sidebar from './Sidebar'
+import TaskingDetail from './TaskingDetail'
+import UserList from './UserList'
+import UserDetail from './UserDetail'
+import UpdateTasking from './UpdateTasking'
+import UpdateUser from './UpdateUser'
+
+const axios = require('axios').default
+axios.defaults.headers.post['Content-Type'] = 'application/json'
+axios.defaults.headers.put['Content-Type'] = 'application/json'
+axios.defaults.headers.patch['Content-Type'] = 'application/json'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router><div className="App">
+      <Sidebar />
+      <div className="main">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/taskings/create" component={NewTasking} />
+          <Route exact path="/taskings/:id" component={TaskingDetail} />
+          <Route exact path="/taskings/:id/update" component={UpdateTasking} />
+          <Route exact path="/users" component={UserList} />
+          <Route exact path="/users/create" component={NewUser} />
+          <Route exact path="/users/:id" component={UserDetail} />
+          <Route exact path="/users/:id/update" component={UpdateUser} />
+        </Switch>  
+      </div>  
+    </div></Router>
   );
 }
 

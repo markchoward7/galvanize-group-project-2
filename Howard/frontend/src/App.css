@@ -1,38 +1,121 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  overflow: auto;
 }
 
-.App-link {
+.main {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 200px;
+  right: 0px;
+  overflow: auto;
+}
+
+.sidebar {
+  position: fixed;
+  width: 200px;
+  height: 100%;
+  left: 0px;
+  overflow: auto;
+  background-color: darkslategrey;
+}
+
+.sidebar a {
+  font-size: 22px;
+}
+
+a {
   color: #61dafb;
+  text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+a:hover {
+  cursor: pointer;
+  color: #0085aa;
+}
+
+select {
+  width: 300px;
+  height: 40px;
+  border: none;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.4);
+  border-radius: 10px;
+  outline: none;
+}
+
+input {
+  width: 300px;
+  height: 40px;
+  border: none;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.4);
+  border-radius: 10px;
+  outline: none;
+}
+
+button {
+  width: 200px;
+  height: 40px;
+  background-color: #61dafb;
+  border: none;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.4);
+  border-radius: 10px;
+  outline: none;
+}
+
+button:hover {
+  background-color: #22c2ee;
+}
+
+button:active {
+  background-color: #0085aa;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+tr {
+  display: table-row;
+  background-color: rgb(80, 95, 95);
+}
+
+.alt-row {
+  background-color: rgb(70, 90, 90);
+}
+
+th {
+  background-color: rgb(27, 68, 68);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.columns-1-2 {
+  columns: 1 / 3;
+}
+
+.left-align {
+  text-align: left;
+}
+
+.right-align {
+  text-align: right;
+}
+
+.tasking-card {
+  width: 600px;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.4);
 }
