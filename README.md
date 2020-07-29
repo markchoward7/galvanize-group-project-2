@@ -1,6 +1,6 @@
 # galvanize-group-project-2
 
-From inside the /Howard directory (trying to restructure but intelliJ throws a fit), run `docker-compose build` and then `docker-compose up`.
+From inside the Howard directory (trying to restructure but intelliJ throws a fit), run `docker-compose build` and then `docker-compose up`.
 
 Unix users may need to run `chmod +x entrypoint.sh` from within the frontend directory.
 
