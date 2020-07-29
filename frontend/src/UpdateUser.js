@@ -71,11 +71,11 @@ function UpdateUser(props) {
             <input type="text" name="lastName" value={state.lastName} onChange={handleChange} />
             <p>Grade:</p>
             <select name="grade" value={state.grade} onChange={handleChange}>
-                {state.gradeList.map(grade => <option value={grade}>{grade}</option>)}
+                {state.gradeList.map(grade => <option value={grade} key={grade}>{grade}</option>)}
             </select>
             <p>Role:</p>
             <select name="role" value={state.role} onChange={handleChange}>
-                {state.roleList.map(role => <option value={role}>{role}</option>)}
+                {state.roleList.map(role => <option value={role} key={role}>{role}</option>)}
             </select>
             <p>E-mail:</p>
             <input type="email" name="email" value={state.email} onChange={handleChange} />

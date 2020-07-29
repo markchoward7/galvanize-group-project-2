@@ -77,7 +77,7 @@ function TaskingDetail(props) {
                 <div>
                     <p>Available Personnel:</p>
                     <div>
-                        {state.availablePersonnel.map(member => <Personnel member={member} taskingId={state.tasking.id} updateParent={assignMember} />)}
+                        {state.availablePersonnel.map(member => <Personnel member={member} taskingId={state.tasking.id} updateParent={assignMember} key={member.id} />)}
                     </div>
                 </div>
             }

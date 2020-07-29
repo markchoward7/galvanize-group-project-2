@@ -63,11 +63,11 @@ function NewUser(props) {
             <input type="text" name="lastName" onChange={handleChange} />
             <p>Grade:</p>
             <select name="grade" onChange={handleChange}>
-                {state.gradeList.map(grade => <option value={grade}>{grade}</option>)}
+                {state.gradeList.map(grade => <option value={grade} key={grade}>{grade}</option>)}
             </select>
             <p>Role:</p>
             <select name="role" onChange={handleChange}>
-                {state.roleList.map(role => <option value={role}>{role}</option>)}
+                {state.roleList.map(role => <option value={role} key={role}>{role}</option>)}
             </select>
             <p>E-mail:</p>
             <input type="email" name="email" onChange={handleChange} />

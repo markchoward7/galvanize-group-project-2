@@ -28,11 +28,15 @@ function UserList() {
 
     return (
         <table>
-            <th>Grade</th>
-            <th>Name</th>
-            <th>Link</th>
+            <thead>
+                <tr>
+                    <th>Grade</th>
+                    <th>Name</th>
+                    <th>Link</th>
+                </tr>
+            </thead>
             <tbody>
-                {state.personnel.map(member => <User member={member} index={index++} />)}
+                {state.personnel.map(member => <User member={member} index={index++} key={member.id}/>)}
             </tbody>
         </table>
 
