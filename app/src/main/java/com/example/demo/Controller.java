@@ -152,18 +152,27 @@ public class Controller {
         return availalablePersonnel;
     }
 
-    @GetMapping("/api/grades")
-    public Grade[] getGrades() {
-        return Grade.values();
+    @GetMapping("/api/enums")
+    public Map<String, Object> getEnums() {
+        Map<String, Object> enums = new HashMap<>();
+        enums.put("grades", Grade.values());
+        enums.put("codes", RequirementCode.values());
+        enums.put("roles", Role.values());
+        return enums;
     }
 
-    @GetMapping("/api/requirement-codes")
-    public RequirementCode[] getRequirementCodes() {
-        return RequirementCode.values();
-    }
-
-    @GetMapping("/api/roles")
-    public Role[] getRoles() {
-        return Role.values();
-    }
+//    @GetMapping("/api/grades")
+//    public Grade[] getGrades() {
+//        return Grade.values();
+//    }
+//
+//    @GetMapping("/api/requirement-codes")
+//    public RequirementCode[] getRequirementCodes() {
+//        return RequirementCode.values();
+//    }
+//
+//    @GetMapping("/api/roles")
+//    public Role[] getRoles() {
+//        return Role.values();
+//    }
 }

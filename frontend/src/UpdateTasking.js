@@ -23,8 +23,7 @@ function UpdateTasking(props) {
     useEffect(() => {
         async function fetchData() {
             const taskResponse = await axios.get(`/api/taskers/${props.match.params.id}`)
-            const gradesResponse = await axios.get("/api/grades")
-            const codesResponse = await axios.get("/api/requirement-codes")
+            const enumResponse = await axios.get('/api/enums')
             var userResponse = {}
             userResponse.data = false
             if (taskResponse.data.assignedPersonnelId) {
@@ -39,8 +38,8 @@ function UpdateTasking(props) {
                 requirementCodes: taskResponse.data.requirementCodes,
                 afsc: taskResponse.data.afsc,
                 assigned: userResponse.data,
-                gradeList: gradesResponse.data,
-                codeList: codesResponse.data,
+                gradeList: enumResponse.data.grades,
+                codeList: enumResponse.data.codes,
             })
         }
         fetchData()

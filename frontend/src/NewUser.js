@@ -23,14 +23,13 @@ function NewUser(props) {
 
     useEffect(() => {
         async function fetchData() {
-            const gradeResponse = await axios.get("/api/grades")
-            const roleResponse = await axios.get("/api/roles")
+            const response = await axios.get("/api/enums")
             setState({
                 ...state,
-                gradeList: gradeResponse.data,
-                roleList: roleResponse.data,
-                grade: gradeResponse.data[0],
-                role: roleResponse.data[0],
+                gradeList: response.data.grades,
+                roleList: response.data.roles,
+                grade: response.data.grades[0],
+                role: response.data.roles[0],
             })
         }
         fetchData()

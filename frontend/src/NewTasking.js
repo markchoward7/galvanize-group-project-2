@@ -21,12 +21,11 @@ function NewTasking(props) {
 
     useEffect(() => {
         async function fetchData() {
-            const gradesResponse = await axios.get("/api/grades")
-            const codesResponse = await axios.get("/api/requirement-codes")
+            const response = await axios.get("/api/enums")
             setState({
                 ...state,
-                gradeList: gradesResponse.data,
-                codeList: codesResponse.data,
+                gradeList: response.data.grades,
+                codeList: response.data.codes,
             })
         }
         fetchData()

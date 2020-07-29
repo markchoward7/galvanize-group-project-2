@@ -24,8 +24,7 @@ function UpdateUser(props) {
     useEffect(() => {
         async function fetchData() {
             const userResponse = await axios.get(`/api/users/${props.match.params.id}`)
-            const gradeResponse = await axios.get("/api/grades")
-            const roleResponse = await axios.get("/api/roles")
+            const enumResponse = await axios.get("/api/enums")
             setState({
                 ...state,
                 firstName: userResponse.data.firstName,
@@ -37,8 +36,8 @@ function UpdateUser(props) {
                 role: userResponse.data.role,
                 grade: userResponse.data.grade,
                 afsc: userResponse.data.afsc,
-                gradeList: gradeResponse.data,
-                roleList: roleResponse.data,
+                gradeList: enumResponse.data.grades,
+                roleList: enumResponse.data.roles,
             })
         }
         fetchData()
