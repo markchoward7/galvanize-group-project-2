@@ -52,6 +52,7 @@ select {
   box-shadow: 0px 2px 4px rgba(0,0,0,0.4);
   border-radius: 10px;
   outline: none;
+  align-self: center;
 }
 
 input {
@@ -73,10 +74,16 @@ button {
   box-shadow: 0px 2px 4px rgba(0,0,0,0.4);
   border-radius: 10px;
   outline: none;
+  align-self: center;
+  margin-top: 10px;
+  margin-left: 100px;
+  margin-bottom: 10px;
+  margin-right: 0px;
 }
 
 button:hover {
   background-color: #2b4397;
+  cursor: pointer;
 }
 
 button:active {
@@ -126,4 +133,9 @@ th {
   margin: 20px;
   border-radius: 20px;
   box-shadow: 0px 4px 8px rgba(0,0,0,0.4);
+}
+
+.button-align-center {
+  margin: 0 auto;
+  display: block;
 }

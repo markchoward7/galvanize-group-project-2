@@ -63,6 +63,10 @@ function UpdateUser(props) {
         props.history.push(`/users/${response.data.id}`)
     }
 
+    const handleCancel = () => {
+        props.history.push(`/users/${props.match.params.id}`)
+    }
+
     return (
         <div className="grid-2">
             <p>First Name:</p>
@@ -87,8 +91,8 @@ function UpdateUser(props) {
             <input type="number" name="edipi" value={state.edipi} onChange={handleChange} />
             <p>AFSC:</p>
             <input type="text" name="afsc" value={state.afsc} onChange={handleChange} />
+            <button onClick={handleCancel}>Cancel</button>
             <button onClick={handleSubmit}>Submit</button>
-            <Link to={`/users/${props.match.params.id}`}><button>Cancel</button></Link>
         </div>
     )
 }

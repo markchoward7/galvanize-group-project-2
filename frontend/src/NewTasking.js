@@ -58,6 +58,10 @@ function NewTasking(props) {
         requirementCodes: event,
     })
 
+    const handleCancel = () => {
+        props.history.push('/')
+    }
+
     
     return (
         <div>
@@ -76,8 +80,8 @@ function NewTasking(props) {
                 <p>Requirement Code(s):</p>
                 <Multiselect options={state.codeList} isObject={false} onSelect={handleCodeSelect} onRemove={handleCodeSelect}
                 style={{ chips: { background: "#2F4CB3" }, searchBox: { border: "none" }, multiselectContainer: { color: "black", width: "300px", "align-self": "center" }, optionContainer: { width: "300px" }, inputField: { background: "white" }, option: { height: "30px" } }} />
+                <button onClick={handleCancel}>Cancel</button>
                 <button onClick={handleSubmit}>Submit</button>
-                <Link to={`/`}><button>Cancel</button></Link>
             </div>
         </div>
     )

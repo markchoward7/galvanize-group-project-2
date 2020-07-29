@@ -2,7 +2,6 @@ import React, {
     useEffect,
     useState
 } from 'react'
-import { Link } from 'react-router-dom'
 
 const axios = require('axios').default
 
@@ -55,6 +54,10 @@ function NewUser(props) {
         props.history.push(`/users/${response.data.id}`)
     }
 
+    const handleCancel = () => {
+        props.history.push('/')
+    }
+
     return (
         <div className="grid-2">
             <p>First Name:</p>
@@ -79,8 +82,8 @@ function NewUser(props) {
             <input type="number" name="edipi" onChange={handleChange} />
             <p>AFSC:</p>
             <input type="text" name="afsc" onChange={handleChange} />
+            <button onClick={handleCancel}>Cancel</button>
             <button onClick={handleSubmit}>Submit</button>
-            <Link to="/"><button>Cancel</button></Link>
         </div>
     )
 }

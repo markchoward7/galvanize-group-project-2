@@ -87,6 +87,10 @@ function UpdateTasking(props) {
         props.history.push('/')
     }
     
+    const handleCancel = async () => {
+        props.history.push(`/taskings/${props.match.params.id}`)
+    }
+
     return (
         <div>
             <div className="grid-2">
@@ -104,15 +108,17 @@ function UpdateTasking(props) {
                 <p>Requirement Code(s):</p>
                 <Multiselect options={state.codeList} selectedValues={state.requirementCodes} isObject={false} onSelect={handleCodeSelect} onRemove={handleCodeSelect} 
                 style={{ chips: { background: "#2F4CB3" }, searchBox: { border: "none" }, multiselectContainer: { color: "black", width: "300px", "align-self": "center" }, optionContainer: { width: "300px" }, inputField: { background: "white" }, option: { height: "30px" } }} />
+                <button onClick={handleCancel}>Cancel</button>
                 <button onClick={handleSubmit}>Submit</button>
-                <Link to={`/taskings/${props.match.params.id}`}><button>Cancel</button></Link>
+                <div></div>
                 <button onClick={handleDelete}>Delete</button>
             </div>
             {state.assigned ? 
             <div className="grid-2">
                 <p>Assigned:</p>
                 <p><Link to={`/users/${state.assigned.id}`}>{`${state.assigned.grade} ${state.assigned.lastName}, ${state.assigned.firstName}`}</Link></p>
-                <button onClick={handleRemove}>Unassign</button>
+                <div></div>
+                <button className="button-align-center" onClick={handleRemove}>Unassign</button>
             </div>
             :
             ""
