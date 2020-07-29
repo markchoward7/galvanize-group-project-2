@@ -1,10 +1,10 @@
 .App {
   text-align: center;
-  background-color: #282c34;
+  background-color: #F1F2F2;
   min-height: 100vh;
   display: flex;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #666;
   overflow: auto;
 }
 
@@ -23,21 +23,25 @@
   height: 100%;
   left: 0px;
   overflow: auto;
-  background-color: darkslategrey;
+  background-color:#24316C;
 }
 
 .sidebar a {
   font-size: 22px;
+  color: #F1F2F2; 
 }
 
+.sidebar a:hover {
+  color: #d3d3d3;
+}
 a {
-  color: #61dafb;
+  color: #2F4CB3;
   text-decoration: none;
 }
 
 a:hover {
   cursor: pointer;
-  color: #0085aa;
+  color: #24316C;
 }
 
 select {
