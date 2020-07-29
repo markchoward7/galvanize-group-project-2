@@ -48,13 +48,13 @@ function UserDetail(props) {
             <p><Link to={`/users/${props.match.params.id}/update`}>Edit</Link></p>
             <p>Tasking History</p>
             <table>
-                <tr>
-                    <th>Location</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Link</th>
-                </tr>
-                {state.taskingHistory.map(tasking => <HistoricalTasking tasking={tasking} index={index++} />)}
+                <th>Location</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Link</th>
+                <tbody>
+                    {state.taskingHistory.map(tasking => <HistoricalTasking tasking={tasking} index={index++} />)}
+                </tbody>
             </table>
         </div>
     )

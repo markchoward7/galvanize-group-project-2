@@ -28,12 +28,12 @@ function UserList() {
 
     return (
         <table>
-            <tr>
-                <th>Grade</th>
-                <th>Name</th>
-                <th>Link</th>
-            </tr>
-            {state.personnel.map(member => <User member={member} index={index++} />)}
+            <th>Grade</th>
+            <th>Name</th>
+            <th>Link</th>
+            <tbody>
+                {state.personnel.map(member => <User member={member} index={index++} />)}
+            </tbody>
         </table>
 
     )
