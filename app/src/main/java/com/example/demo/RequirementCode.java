@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public enum RequirementCode {
-    EXAMPLE1(1L), EXAMPLE2(2L), EXAMPLE3(4L), EXAMPLE4(8L), EXAMPLE5(16L);
+    A(1L), B(2L), C(4L), D(8L), E(16L);
 
     private Long value;
 
