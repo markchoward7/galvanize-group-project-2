@@ -79,14 +79,6 @@ public class User {
         this.afsc = afsc;
     }
 
-    public Role getRole() {
-        return Role.valueOf(role);
-    }
-
-    public void setRole(Role role) {
-        this.role = role.toString();
-    }
-
     public String getEmail() {
         return email;
     }
@@ -105,13 +97,17 @@ public class User {
         this.password = password;
     }
 
+
+    public Role getRole() {
+        return Role.valueOf(role);
+    }
+
+    public void setRole(Role role) {
+        this.role = role.toString();
+    }
+
     public Grade getGrade() {
-        for (Grade grade : Grade.values()) {
-            if (grade.matches(this.grade)) {
-                return grade;
-            }
-        }
-        return null;
+        return Grade.fromValue(grade);
     }
 
     public void setGrade(Grade grade) {

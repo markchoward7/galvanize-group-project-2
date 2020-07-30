@@ -28,6 +28,7 @@ public class Tasker {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private User assigned;
 
+
     public Long getId() {
         return id;
     }
@@ -56,23 +57,7 @@ public class Tasker {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
-    public List<Grade> getRequiredGrade() {
-        List<Grade> gradeList = new LinkedList<Grade>();
-        for (Grade grade : Grade.values()) {
-            if (grade.matches(requiredGrade)) {
-                gradeList.add(grade);
-            }
-        }
-        return gradeList;
-    }
-
-    public void setRequiredGrade(List<Grade> requiredGrades) {
-        this.requiredGrade = Grade.combine(requiredGrades);
-    }
+    public void setEndDate(Date endDate) { this.endDate = endDate; }
 
     public String getAfsc() {
         return afsc;
@@ -82,25 +67,24 @@ public class Tasker {
         this.afsc = afsc;
     }
 
+    public User getAssigned() { return assigned; }
+
+    public void setAssigned(User assigned) { this.assigned = assigned; }
+
+
+    public List<Grade> getRequiredGrade() {
+        return Grade.buildList(requiredGrade);
+    }
+
+    public void setRequiredGrade(List<Grade> requiredGrades) {
+        this.requiredGrade = Grade.combine(requiredGrades);
+    }
+
     public List<RequirementCode> getRequirementCodes() {
-        List<RequirementCode> codeList = new LinkedList<RequirementCode>();
-        for (RequirementCode code : RequirementCode.values()) {
-            if (code.matches(requirementCodes)) {
-                codeList.add(code);
-            }
-        }
-        return codeList;
+        return RequirementCode.buildList(requirementCodes);
     }
 
     public void setRequirementCodes(List<RequirementCode> requirementCodes) {
         this.requirementCodes = RequirementCode.combine(requirementCodes);
-    }
-
-    public User getAssigned() {
-        return assigned;
-    }
-
-    public void setAssigned(User assigned) {
-        this.assigned = assigned;
     }
 }
