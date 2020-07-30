@@ -24,17 +24,15 @@ function UpdateTasking(props) {
         async function fetchData() {
             const taskResponse = await axios.get(`/api/taskers/${props.match.params.id}`)
             const enumResponse = await axios.get('/api/enums')
-            const tasker = taskResponse.data.tasker
-            const assigned = taskResponse.data.assigned
             setState({
                 ...state,
-                location: tasker.location,
-                startDate: tasker.startDate,
-                endDate: tasker.endDate,
-                requiredGrade: tasker.requiredGrade,
-                requirementCodes: tasker.requirementCodes,
-                afsc: tasker.afsc,
-                assigned: assigned,
+                location: taskResponse.data.location,
+                startDate: taskResponse.data.startDate,
+                endDate: taskResponse.data.endDate,
+                requiredGrade: taskResponse.data.requiredGrade,
+                requirementCodes: taskResponse.data.requirementCodes,
+                afsc: taskResponse.data.afsc,
+                assigned: taskResponse.data.assigned,
                 gradeList: enumResponse.data.grades,
                 codeList: enumResponse.data.codes,
             })

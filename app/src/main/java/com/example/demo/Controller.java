@@ -23,20 +23,8 @@ public class Controller {
     }
 
     @GetMapping("/api/taskers")
-    public List<Map<String, Object>> listTaskers() {
-        List<Map<String, Object>> results = new LinkedList<>();
-
-        Iterable<Tasker> taskers = this.taskerRepository.findAll();
-        for (Tasker tasker : taskers) {
-            Map<String, Object> taskerData = new HashMap<>();
-            taskerData.put("tasker", tasker);
-            if (tasker.getAssignedPersonnelId() != null) {
-                taskerData.put("assigned", this.userRepository.findById(tasker.getAssignedPersonnelId()));
-            }
-            results.add(taskerData);
-        }
-
-        return results;
+    public Iterable<Tasker> listTaskers() {
+        return this.taskerRepository.findAll();
     }
 
     @PostMapping("/api/taskers")
@@ -45,14 +33,8 @@ public class Controller {
     }
 
     @GetMapping("/api/taskers/{id}")
-    public Map<String, Object> retrieveTasker(@PathVariable Long id) {
-        Map<String, Object> taskerData = new HashMap<>();
-        Tasker tasker = this.taskerRepository.findById(id).get();
-        taskerData.put("tasker", tasker);
-        if (tasker.getAssignedPersonnelId() != null) {
-            taskerData.put("assigned", this.userRepository.findById(tasker.getAssignedPersonnelId()));
-        }
-        return taskerData;
+    public Tasker retrieveTasker(@PathVariable Long id) {
+        return this.taskerRepository.findById(id).get();
     }
 
     @PatchMapping("/api/taskers/{id}")
@@ -64,7 +46,11 @@ public class Controller {
     @PutMapping("/api/taskers/{id}")
     public Tasker updateAssignedToTasker(@PathVariable Long id, @RequestBody User user) {
         Tasker taskerToUpdate = this.taskerRepository.findById(id).get();
-        taskerToUpdate.setAssignedPersonnelId(user.getId());
+        if (user.getId() != null) {
+            taskerToUpdate.setAssigned(user);
+        } else {
+            taskerToUpdate.setAssigned(null);
+        }
         return this.taskerRepository.save(taskerToUpdate);
     }
 

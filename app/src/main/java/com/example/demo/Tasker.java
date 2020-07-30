@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -22,7 +23,10 @@ public class Tasker {
     private Long requiredGrade;
     private String afsc;
     private Long requirementCodes;
-    private Long assignedPersonnelId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "assigned_personnel_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private User assigned;
 
     public Long getId() {
         return id;
@@ -92,11 +96,11 @@ public class Tasker {
         this.requirementCodes = RequirementCode.combine(requirementCodes);
     }
 
-    public Long getAssignedPersonnelId() {
-        return assignedPersonnelId;
+    public User getAssigned() {
+        return assigned;
     }
 
-    public void setAssignedPersonnelId(Long assignedPersonnelId) {
-        this.assignedPersonnelId = assignedPersonnelId;
+    public void setAssigned(User assigned) {
+        this.assigned = assigned;
     }
 }

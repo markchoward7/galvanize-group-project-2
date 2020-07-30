@@ -19,7 +19,7 @@ function TaskingDetail(props) {
 
     const assignMember = (member) => {
         let taskCopy = { ...state.tasking }
-        taskCopy.assignedPersonnelId = member.id
+        taskCopy.assigned = member
         setState({
             ...state,
             assigned: member,
@@ -30,19 +30,19 @@ function TaskingDetail(props) {
     useEffect(() => {
         async function fetchData() {
             const taskerResponse = await axios.get(`/api/taskers/${props.match.params.id}`)
-            taskerResponse.data.tasker.requiredGrade = taskerResponse.data.tasker.requiredGrade.join(", ")
-            taskerResponse.data.tasker.requirementCodes = taskerResponse.data.tasker.requirementCodes.join(", ")
-            if (taskerResponse.data.tasker.assignedPersonnelId) {
+            taskerResponse.data.requiredGrade = taskerResponse.data.requiredGrade.join(", ")
+            taskerResponse.data.requirementCodes = taskerResponse.data.requirementCodes.join(", ")
+            if (taskerResponse.data.assigned) {
                 setState({
                     ...state,
-                    tasking: taskerResponse.data.tasker,
+                    tasking: taskerResponse.data,
                     assigned: taskerResponse.data.assigned,
                 })
             } else {
                 const personnelResponse = await axios.get(`/api/taskers/${props.match.params.id}/available`)
                 setState({
                     ...state,
-                    tasking: taskerResponse.data.tasker,
+                    tasking: taskerResponse.data,
                     availablePersonnel: personnelResponse.data,
                 })
             }
@@ -67,7 +67,7 @@ function TaskingDetail(props) {
                 <p>{state.tasking.afsc}</p>
             </div>
             <Link to={`${props.location.pathname}/update`}>Edit</Link>
-            {state.tasking.assignedPersonnelId ? 
+            {state.tasking.assigned ? 
                 <div className="grid-2">
                     <p>Assigned:</p>
                     <p><Link to={`/users/${state.assigned.id}`}>{`${state.assigned.grade} ${state.assigned.lastName}, ${state.assigned.firstName}`}</Link></p>
