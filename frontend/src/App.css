@@ -6,6 +6,7 @@
   font-size: calc(10px + 2vmin);
   color: #666;
   overflow: auto;
+  font-family: sans-serif;
 }
 
 .main {

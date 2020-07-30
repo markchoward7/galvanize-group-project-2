@@ -23,8 +23,20 @@ public class Controller {
     }
 
     @GetMapping("/api/taskers")
-    public Iterable<Tasker> listTaskers() {
-        return this.taskerRepository.findAll();
+    public List<Map<String, Object>> listTaskers() {
+        List<Map<String, Object>> results = new LinkedList<>();
+
+        Iterable<Tasker> taskers = this.taskerRepository.findAll();
+        for (Tasker tasker : taskers) {
+            Map<String, Object> taskerData = new HashMap<>();
+            taskerData.put("tasker", tasker);
+            if (tasker.getAssignedPersonnelId() != null) {
+                taskerData.put("assigned", this.userRepository.findById(tasker.getAssignedPersonnelId()));
+            }
+            results.add(taskerData);
+        }
+
+        return results;
     }
 
     @PostMapping("/api/taskers")
@@ -33,8 +45,14 @@ public class Controller {
     }
 
     @GetMapping("/api/taskers/{id}")
-    public Tasker retrieveTasker(@PathVariable Long id) {
-        return this.taskerRepository.findById(id).get();
+    public Map<String, Object> retrieveTasker(@PathVariable Long id) {
+        Map<String, Object> taskerData = new HashMap<>();
+        Tasker tasker = this.taskerRepository.findById(id).get();
+        taskerData.put("tasker", tasker);
+        if (tasker.getAssignedPersonnelId() != null) {
+            taskerData.put("assigned", this.userRepository.findById(tasker.getAssignedPersonnelId()));
+        }
+        return taskerData;
     }
 
     @PatchMapping("/api/taskers/{id}")
@@ -112,14 +130,6 @@ public class Controller {
         return this.userRepository.save(user);
     }
 
-    @DeleteMapping("/api/users/{id}")
-    public Map<String, String> deleteUser(@PathVariable Long id) {
-        this.userRepository.deleteById(id);
-        Map<String, String> returnStatement = new HashMap<>();
-        returnStatement.put("value", "deleted");
-        return returnStatement;
-    }
-
     @GetMapping("/api/taskers/{id}/available")
     public Iterable<User> listAvailablePersonnel(@PathVariable Long id) throws ParseException {
         Tasker tasker = this.taskerRepository.findById(id).get();
@@ -160,19 +170,4 @@ public class Controller {
         enums.put("roles", Role.values());
         return enums;
     }
-
-//    @GetMapping("/api/grades")
-//    public Grade[] getGrades() {
-//        return Grade.values();
-//    }
-//
-//    @GetMapping("/api/requirement-codes")
-//    public RequirementCode[] getRequirementCodes() {
-//        return RequirementCode.values();
-//    }
-//
-//    @GetMapping("/api/roles")
-//    public Role[] getRoles() {
-//        return Role.values();
-//    }
 }

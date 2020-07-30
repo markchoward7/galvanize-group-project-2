@@ -30,20 +30,19 @@ function TaskingDetail(props) {
     useEffect(() => {
         async function fetchData() {
             const taskerResponse = await axios.get(`/api/taskers/${props.match.params.id}`)
-            taskerResponse.data.requiredGrade = taskerResponse.data.requiredGrade.join(", ")
-            taskerResponse.data.requirementCodes = taskerResponse.data.requirementCodes.join(", ")
-            if (taskerResponse.data.assignedPersonnelId) {
-                const personnelResponse = await axios.get(`/api/users/${taskerResponse.data.assignedPersonnelId}`)
+            taskerResponse.data.tasker.requiredGrade = taskerResponse.data.tasker.requiredGrade.join(", ")
+            taskerResponse.data.tasker.requirementCodes = taskerResponse.data.tasker.requirementCodes.join(", ")
+            if (taskerResponse.data.tasker.assignedPersonnelId) {
                 setState({
                     ...state,
-                    tasking: taskerResponse.data,
-                    assigned: personnelResponse.data,
+                    tasking: taskerResponse.data.tasker,
+                    assigned: taskerResponse.data.assigned,
                 })
             } else {
                 const personnelResponse = await axios.get(`/api/taskers/${props.match.params.id}/available`)
                 setState({
                     ...state,
-                    tasking: taskerResponse.data,
+                    tasking: taskerResponse.data.tasker,
                     availablePersonnel: personnelResponse.data,
                 })
             }

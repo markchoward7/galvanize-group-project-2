@@ -24,20 +24,17 @@ function UpdateTasking(props) {
         async function fetchData() {
             const taskResponse = await axios.get(`/api/taskers/${props.match.params.id}`)
             const enumResponse = await axios.get('/api/enums')
-            var userResponse = {}
-            userResponse.data = false
-            if (taskResponse.data.assignedPersonnelId) {
-                userResponse = await axios.get(`/api/users/${taskResponse.data.assignedPersonnelId}`)
-            }
+            const tasker = taskResponse.data.tasker
+            const assigned = taskResponse.data.assigned
             setState({
                 ...state,
-                location: taskResponse.data.location,
-                startDate: taskResponse.data.startDate,
-                endDate: taskResponse.data.endDate,
-                requiredGrade: taskResponse.data.requiredGrade,
-                requirementCodes: taskResponse.data.requirementCodes,
-                afsc: taskResponse.data.afsc,
-                assigned: userResponse.data,
+                location: tasker.location,
+                startDate: tasker.startDate,
+                endDate: tasker.endDate,
+                requiredGrade: tasker.requiredGrade,
+                requirementCodes: tasker.requirementCodes,
+                afsc: tasker.afsc,
+                assigned: assigned,
                 gradeList: enumResponse.data.grades,
                 codeList: enumResponse.data.codes,
             })
@@ -104,10 +101,10 @@ function UpdateTasking(props) {
                 <input type="text" name="afsc" value={state.afsc} onChange={handleChange}/>
                 <p>Required Grade(s):</p>
                 <Multiselect options={state.gradeList} selectedValues={state.requiredGrade} isObject={false} onSelect={handleGradeSelect} onRemove={handleGradeSelect} 
-                style={{ chips: { background: "#2F4CB3" }, searchBox: { border: "none" }, multiselectContainer: { color: "black", width: "300px", "align-self": "center" }, optionContainer: { width: "300px" }, inputField: { background: "white" }, option: { height: "30px" } }} />
+                style={{ chips: { background: "#2F4CB3" }, searchBox: { border: "none" }, multiselectContainer: { color: "black", width: "300px", alignSelf: "center" }, optionContainer: { width: "300px" }, inputField: { background: "white" }, option: { height: "30px" } }} />
                 <p>Requirement Code(s):</p>
                 <Multiselect options={state.codeList} selectedValues={state.requirementCodes} isObject={false} onSelect={handleCodeSelect} onRemove={handleCodeSelect} 
-                style={{ chips: { background: "#2F4CB3" }, searchBox: { border: "none" }, multiselectContainer: { color: "black", width: "300px", "align-self": "center" }, optionContainer: { width: "300px" }, inputField: { background: "white" }, option: { height: "30px" } }} />
+                style={{ chips: { background: "#2F4CB3" }, searchBox: { border: "none" }, multiselectContainer: { color: "black", width: "300px", alignSelf: "center" }, optionContainer: { width: "300px" }, inputField: { background: "white" }, option: { height: "30px" } }} />
                 <button onClick={handleCancel}>Cancel</button>
                 <button onClick={handleSubmit}>Submit</button>
                 <div></div>

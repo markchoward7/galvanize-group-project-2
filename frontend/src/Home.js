@@ -27,7 +27,7 @@ function Home(props) {
 
     return (
         <div className="grid-2">
-            {state.taskings.map(tasking => <Tasking tasking={tasking} key={tasking.id} />)}
+            {state.taskings.map(tasking => <Tasking tasking={tasking} key={tasking.tasker.id} />)}
         </div>
     )
 }
