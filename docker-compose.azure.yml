@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  backend:
+    image: registry.gitlab.com/markhoward/container-registry/tasker_app_backend
+    expose:
+      - 8080
+    depends_on:
+      - db
+
+  frontend:
+    image: registry.gitlab.com/markhoward/container-registry/tasker_app_frontend
+    expose:
+      - 3000
+
+  db:
+    image: registry.gitlab.com/markhoward/container-registry/tasker_app_db
+    volumes:
+      - mysql_data_prod:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=super-secret-squirrel
+      - MYSQL_DATABASE=database-name
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=admin
+
+  nginx:
+    image: registry.gitlab.com/markhoward/container-registry/tasker_app_nginx
+    ports:
+      - 80:80
+    depends_on:
+      - frontend
+      - backend
+
+volumes:
+  mysql_data_prod:
