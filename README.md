@@ -1,6 +1,6 @@
 # galvanize-group-project-2
 
-App is deployed to https://galvanize-tasker-app.azurewebsites.net/
+App is deployed to https://galvanize-tasker-app.azurewebsites.net/ but it is not always online.
 
 Windows users should run the following command before cloning if they have never run it before `git config --global core.autocrlf input`
 
