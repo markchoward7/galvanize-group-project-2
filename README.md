@@ -1,5 +1,7 @@
 # galvanize-group-project-2
 
+App is deployed to https://galvanize-tasker-app.azurewebsites.net/
+
 Windows users should run the following command before cloning if they have never run it before `git config --global core.autocrlf input`
 
 From the project's root directory run `docker-compose build` and then `docker-compose up`.
